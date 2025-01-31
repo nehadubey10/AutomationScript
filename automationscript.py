@@ -198,12 +198,14 @@ def start_process():
             EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Next']"))  # Adjust XPath for date cells
         )
         next_button.click()
-
-        available_seats = check_available_seat_zone(driver,"Zone 10")
+        if shift_num == 0:
+            available_seats = check_available_seat_zone(driver,"Zone 2")
+        else:
+            available_seats = check_available_seat_zone(driver,"Zone 3")
 
         if available_seats > 0:
             vehicle_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//div[normalize-space()='Canter']"))  # Adjust XPath for date cells
+            EC.element_to_be_clickable((By.XPATH, "//div[normalize-space()='Gypsy']"))  # Adjust XPath for date cells
             )
             vehicle_button.click()
         else:
@@ -211,11 +213,14 @@ def start_process():
                 EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Back']"))  # Adjust XPath for date cells
                 )
             back_button.click()
+            if shift_num == 0:
+                available_seats = check_available_seat_zone(driver,"Zone 3")
+            else:
+                available_seats = check_available_seat_zone(driver,"Zone 2")
 
-            available_seats = check_available_seat_zone(driver,"Zone 3")
             if available_seats > 0:
                 vehicle_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//div[normalize-space()='Canter']"))  # Adjust XPath for date cells
+                EC.element_to_be_clickable((By.XPATH, "//div[normalize-space()='Gypsy']"))  # Adjust XPath for date cells
                 )
                 vehicle_button.click()
             else:
